@@ -5,7 +5,7 @@ import ToastProvider from '@/components/Toast';
 export const metadata: Metadata = {
   title: 'AttendFlow - Attendance Management System',
   description: 'Modern attendance management system for educational institutions',
-  icons: '/School.png',
+  icons: [{ rel: 'icon', url: '/School.png', type: 'image/png' }],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

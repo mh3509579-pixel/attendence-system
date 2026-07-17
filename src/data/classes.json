@@ -29,9 +29,28 @@
     "schedule": "Thu 9:00-11:00",
     "isActive": true,
     "createdAt": "2026-07-16T15:02:31.542Z",
-    "updatedAt": "2026-07-16T15:14:38.082Z",
+    "updatedAt": "2026-07-17T03:24:55.421Z",
     "students": [
-      "0e682588-7b99-4e73-be65-5157cca2ec8d"
+      "0e682588-7b99-4e73-be65-5157cca2ec8d",
+      "6727ee31-cbec-4cc1-8b5c-37066e285ab5",
+      "d39c0375-5e15-49fa-8624-301d93e6832a"
+    ]
+  },
+  {
+    "_id": "913139dc-5bd7-4337-b59b-a91714eb9183",
+    "name": "Artifical Intelligence",
+    "section": "C",
+    "subject": "Data Structure and Alogarithm",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "teacher": "a6634afb-3790-4e54-bed5-c25513917a13",
+    "room": "114",
+    "schedule": "Fri 10:00-11:30",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:28:32.760Z",
+    "updatedAt": "2026-07-17T03:30:35.728Z",
+    "students": [
+      "0dc82e4b-ffb3-4b5c-a9db-01ccb9bf3d13",
+      "5b5a6d06-941b-48e1-99b9-34e1b22a3e82"
     ]
   }
 ]

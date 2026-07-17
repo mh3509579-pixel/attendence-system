@@ -85,5 +85,60 @@
     "isActive": true,
     "createdAt": "2026-07-16T15:14:38.076Z",
     "updatedAt": "2026-07-16T15:14:38.076Z"
+  },
+  {
+    "_id": "6727ee31-cbec-4cc1-8b5c-37066e285ab5",
+    "name": "Azhar Hussain",
+    "email": "azharhussain@gmail.com",
+    "password": "$2b$12$eluL8svaUTMPSLWiN3TiuuxgEG4kFKG24hhz2cgCHovzUVmHBwdOC",
+    "role": "student",
+    "phone": "03225678912",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:24:02.475Z",
+    "updatedAt": "2026-07-17T03:24:02.475Z"
+  },
+  {
+    "_id": "d39c0375-5e15-49fa-8624-301d93e6832a",
+    "name": "Noor Fatima",
+    "email": "noorfatima@gmail.com",
+    "password": "$2b$12$XfK4ut7fVcrIXscK6OUAaelWjgdnjXAb9LSxWP4S1mcEevSh1yyAS",
+    "role": "student",
+    "phone": "03226789543",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:24:55.415Z",
+    "updatedAt": "2026-07-17T03:24:55.415Z"
+  },
+  {
+    "_id": "a6634afb-3790-4e54-bed5-c25513917a13",
+    "name": "Sir Hamza Ijaz",
+    "email": "hamzaijaz@gmail.com",
+    "password": "$2b$12$nYqGuP8WRMb1eYIdPxH.J.B/3FWTHCVTynQQKesi4GkD4qcYtic8S",
+    "role": "teacher",
+    "phone": "03006923622",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:26:07.484Z",
+    "updatedAt": "2026-07-17T03:26:29.645Z"
+  },
+  {
+    "_id": "0dc82e4b-ffb3-4b5c-a9db-01ccb9bf3d13",
+    "name": "Talha Sahid",
+    "email": "talhasahid@gmail.com",
+    "password": "$2b$12$Hz3b1T6kpgzTQd.d/nttbennO5iVpRmUit.lwgo3QL7sjQupBRlXm",
+    "role": "student",
+    "phone": "03001234567",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:29:42.819Z",
+    "updatedAt": "2026-07-17T03:29:42.819Z"
+  },
+  {
+    "_id": "5b5a6d06-941b-48e1-99b9-34e1b22a3e82",
+    "name": "Ihtisham",
+    "email": "ihtisham@gmail.com",
+    "password": "$2b$12$Z9v3gUjhezICdLzimTFiEuxnK2DweWjNrA6dKcO7Aa7tZr/JfpWL2",
+    "role": "student",
+    "phone": "03006923738",
+    "isActive": true,
+    "createdAt": "2026-07-17T03:30:35.724Z",
+    "updatedAt": "2026-07-17T03:30:35.725Z"
   }
 ]
