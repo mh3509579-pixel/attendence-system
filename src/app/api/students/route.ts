@@ -5,9 +5,8 @@ import User from '@/models/User';
 import Class from '@/models/Class';
 
 function generateFromName(name: string) {
-  const base = name.toLowerCase().replace(/\s+/g, '.');
   const first = name.split(/\s+/)[0].toLowerCase();
-  return { email: `${base}@gmail.com`, password: `${first}@123` };
+  return { email: `${first}@gmail.com`, password: `${first}123` };
 }
 
 export async function GET(req: Request) {

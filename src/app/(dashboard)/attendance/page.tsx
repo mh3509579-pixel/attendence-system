@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import EmptyState from '@/components/EmptyState';
-import { ClipboardCheck, Check, X, Clock, Save, CalendarDays, TrendingUp, CalendarCheck, AlertTriangle, type LucideIcon } from 'lucide-react';
+import { ClipboardCheck, Check, X, Clock, Save, CalendarDays, TrendingUp, CalendarCheck, AlertTriangle, List, type LucideIcon } from 'lucide-react';
 
 interface ClassData {
   _id: string;
@@ -57,6 +57,18 @@ export default function AttendancePage() {
   const [studentHistory, setStudentHistory] = useState<StudentHistoryRecord[]>([]);
   const [studentStats, setStudentStats] = useState<{ present: number; absent: number; late: number; excused: number; total: number } | null>(null);
   const [historyLoading, setHistoryLoading] = useState(false);
+
+  interface SavedSummary {
+    date: string;
+    records: AttendanceRecord[];
+    total: number;
+    present: number;
+    absent: number;
+    late: number;
+    excused: number;
+    rate: number;
+  }
+  const [savedSummary, setSavedSummary] = useState<SavedSummary | null>(null);
 
   useEffect(() => {
     const loadInitial = async () => {
@@ -180,6 +192,17 @@ export default function AttendancePage() {
       const data = await res.json();
       if (!res.ok) { toast.error(data.error); return; }
       toast.success('Attendance saved!');
+      const present = records.filter(r => r.status === 'present').length;
+      const absent = records.filter(r => r.status === 'absent').length;
+      const late = records.filter(r => r.status === 'late').length;
+      const excused = records.filter(r => r.status === 'excused').length;
+      setSavedSummary({
+        date,
+        records: [...records],
+        total: records.length,
+        present, absent, late, excused,
+        rate: records.length > 0 ? Math.round((present + late) / records.length * 100) : 0,
+      });
     } catch {
       toast.error('Failed to save');
     } finally {
@@ -262,7 +285,67 @@ export default function AttendancePage() {
         </div>
       )}
 
-      {isStudent ? (
+      {savedSummary ? (
+        <div className="space-y-4">
+          <div className="glass rounded-2xl p-6 border border-border">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold">Attendance Summary</h2>
+              <button
+                onClick={() => setSavedSummary(null)}
+                className="px-4 py-2 rounded-xl border border-border text-sm text-text-muted hover:text-text transition-colors"
+              >
+                Mark Again
+              </button>
+            </div>
+            <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border">
+              <CalendarDays size={18} className="text-violet-400" />
+              <span className="font-semibold">{new Date(savedSummary.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
+              <span className="text-text-muted">&middot;</span>
+              <span className="text-sm text-text-muted">{selectedClassData?.name} - {selectedClassData?.section}</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-5">
+              <div className="text-center p-3 bg-surface rounded-xl border border-border">
+                <p className="text-xs text-text-muted">Total</p>
+                <p className="text-xl font-bold">{savedSummary.total}</p>
+              </div>
+              <div className="text-center p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                <p className="text-xs text-text-muted">Present</p>
+                <p className="text-xl font-bold text-emerald-400">{savedSummary.present}</p>
+              </div>
+              <div className="text-center p-3 bg-red-500/10 rounded-xl border border-red-500/20">
+                <p className="text-xs text-text-muted">Absent</p>
+                <p className="text-xl font-bold text-red-400">{savedSummary.absent}</p>
+              </div>
+              <div className="text-center p-3 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                <p className="text-xs text-text-muted">Late</p>
+                <p className="text-xl font-bold text-amber-400">{savedSummary.late}</p>
+              </div>
+              <div className="text-center p-3 bg-violet-500/10 rounded-xl border border-violet-500/20">
+                <p className="text-xs text-text-muted">Rate</p>
+                <p className="text-xl font-bold text-violet-400">{savedSummary.rate}%</p>
+              </div>
+            </div>
+            <div className="divide-y divide-border max-h-80 overflow-y-auto">
+              {savedSummary.records.map((record) => {
+                const student = selectedClassData?.students?.find(s => s._id === record.student);
+                return (
+                  <div key={record.student} className="flex items-center justify-between py-2.5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs">
+                        {student?.name?.charAt(0)?.toUpperCase() || '?'}
+                      </div>
+                      <span className="text-sm">{student?.name || 'Unknown'}</span>
+                    </div>
+                    <span className={`px-3 py-1 rounded-lg text-xs font-medium border flex items-center gap-1.5 ${statusColors[record.status] || statusColors.present}`}>
+                      {(() => { const Icon = statusIcons[record.status] || statusIcons.present; return <><Icon size={12} /> {record.status.charAt(0).toUpperCase() + record.status.slice(1)}</>; })()}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ) : isStudent ? (
         historyLoading ? (
           <LoadingSpinner />
         ) : !selectedClass ? (
