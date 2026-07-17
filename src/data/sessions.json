@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "name": "Spring Semester 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-10-01",
+    "isActive": true,
+    "createdAt": "2026-07-16T09:07:46.192Z",
+    "updatedAt": "2026-07-16T10:09:04.213Z"
+  },
+  {
+    "_id": "bda7de92-4fd0-4881-8368-7206da9d0426",
+    "name": "Summer Session 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "isActive": false,
+    "createdAt": "2026-07-16T09:12:37.943Z",
+    "updatedAt": "2026-07-16T10:09:04.210Z"
+  }
+]

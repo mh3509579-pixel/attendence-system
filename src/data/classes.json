@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "7fb758d4-388c-4a40-ac05-77d50ae8a891",
+    "name": "Computer Science",
+    "section": "A",
+    "subject": "Functional English",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "teacher": "3baff0b1-a5a0-4ffc-badc-37c37085a90b",
+    "room": "112",
+    "schedule": "Mon 9:00-10:00",
+    "isActive": true,
+    "createdAt": "2026-07-16T09:16:17.392Z",
+    "updatedAt": "2026-07-16T14:59:53.929Z",
+    "students": [
+      "fcd48e22-4180-4d6e-8b15-e6c588384603",
+      "f093ad3a-e9df-4b13-95ad-cbd8708b6683",
+      "530793fe-e76e-4fbb-bcaa-e00ba08b20e9",
+      "dcf20d55-4470-40fc-99e0-3f1f1d129608"
+    ]
+  },
+  {
+    "_id": "22a7660d-3249-4f58-ae7f-025bf201ca7e",
+    "name": "Software Engineering",
+    "section": "B",
+    "subject": "OOP",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "teacher": "307ef010-cc68-46ae-9175-55a8b61859a3",
+    "room": "113",
+    "schedule": "Thu 9:00-11:00",
+    "isActive": true,
+    "createdAt": "2026-07-16T15:02:31.542Z",
+    "updatedAt": "2026-07-16T15:14:38.082Z",
+    "students": [
+      "0e682588-7b99-4e73-be65-5157cca2ec8d"
+    ]
+  }
+]

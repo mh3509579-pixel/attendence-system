@@ -1,0 +1,59 @@
+import { NextResponse } from 'next/server';
+import { connectDB } from '@/lib/db';
+import { getAuthUser, hashPassword } from '@/lib/auth';
+import User from '@/models/User';
+import Class from '@/models/Class';
+
+export async function GET(req: Request) {
+  try {
+    const user = await getAuthUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    await connectDB();
+    const { searchParams } = new URL(req.url);
+    const search = searchParams.get('search');
+
+    const filter: Record<string, unknown> = { role: 'teacher' };
+    if (search) filter.name = { $regex: search, $options: 'i' };
+
+    const teachers = await User.find(filter).select('-password').sort({ name: 1 });
+    return NextResponse.json({ teachers });
+  } catch {
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const user = await getAuthUser();
+    if (!user || user.role !== 'admin') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    const body = await req.json();
+    const { name, email, password, phone } = body;
+
+    if (!name || !email || !password) {
+      return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
+    }
+
+    await connectDB();
+
+    const existing = await User.findOne({ email: email.toLowerCase() });
+    if (existing) {
+      return NextResponse.json({ error: 'Email already exists' }, { status: 400 });
+    }
+
+    const hashedPassword = await hashPassword(password);
+    const teacher = await User.create({
+      name, email, password: hashedPassword, role: 'teacher', phone, isActive: true,
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+    const { password: _pw, ...teacherData } = teacher as any;
+    return NextResponse.json({ teacher: teacherData }, { status: 201 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Server error';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}

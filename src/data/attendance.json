@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "209e4bbb-f0a9-44a7-bac9-1a08947d210a",
+    "createdAt": "2026-07-16T09:23:00.074Z",
+    "updatedAt": "2026-07-16T09:23:00.074Z",
+    "student": "62183121-80c8-4797-bb52-bf1e644f804e",
+    "class": "276f065a-6cc8-465b-bdd3-44ddee3a3aa5",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "present",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  },
+  {
+    "_id": "1275181b-26f0-44c5-8e69-1d77b86d226c",
+    "createdAt": "2026-07-16T09:36:27.458Z",
+    "updatedAt": "2026-07-16T15:03:09.584Z",
+    "student": "f093ad3a-e9df-4b13-95ad-cbd8708b6683",
+    "class": "7fb758d4-388c-4a40-ac05-77d50ae8a891",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "late",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  },
+  {
+    "_id": "f3cf9edf-1c17-47fa-bf8a-eb967e776834",
+    "createdAt": "2026-07-16T09:36:27.458Z",
+    "updatedAt": "2026-07-16T15:03:09.584Z",
+    "student": "fcd48e22-4180-4d6e-8b15-e6c588384603",
+    "class": "7fb758d4-388c-4a40-ac05-77d50ae8a891",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "present",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  },
+  {
+    "_id": "ca85b92b-c6ed-4c1c-839c-b515d5efdb01",
+    "createdAt": "2026-07-16T09:56:10.431Z",
+    "updatedAt": "2026-07-16T15:03:09.584Z",
+    "student": "530793fe-e76e-4fbb-bcaa-e00ba08b20e9",
+    "class": "7fb758d4-388c-4a40-ac05-77d50ae8a891",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "present",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  },
+  {
+    "_id": "52f1f9ff-5c1c-427d-923d-f08779a75b43",
+    "createdAt": "2026-07-16T15:03:09.584Z",
+    "updatedAt": "2026-07-16T15:03:09.584Z",
+    "student": "dcf20d55-4470-40fc-99e0-3f1f1d129608",
+    "class": "7fb758d4-388c-4a40-ac05-77d50ae8a891",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "present",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  },
+  {
+    "_id": "c1878818-b64b-450f-abbf-f53a4adcd0e8",
+    "createdAt": "2026-07-16T15:15:40.142Z",
+    "updatedAt": "2026-07-16T15:15:40.142Z",
+    "student": "0e682588-7b99-4e73-be65-5157cca2ec8d",
+    "class": "22a7660d-3249-4f58-ae7f-025bf201ca7e",
+    "session": "8ec66561-c8c9-4c13-9e7c-cfb222251aad",
+    "date": "2026-07-16T00:00:00.000Z",
+    "status": "present",
+    "markedBy": "17632490-d860-4ef0-a756-88c6713d5886",
+    "method": "manual",
+    "remark": ""
+  }
+]
