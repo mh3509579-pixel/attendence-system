@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db';
-import { getAuthUser } from '@/lib/auth';
-import { hashPassword } from '@/lib/auth';
+import { getAuthUser, hashPassword } from '@/lib/auth';
 import User from '@/models/User';
 import Class from '@/models/Class';
+
+function generateFromName(name: string) {
+  const base = name.toLowerCase().replace(/\s+/g, '.');
+  const first = name.split(/\s+/)[0].toLowerCase();
+  return { email: `${base}@gmail.com`, password: `${first}@123` };
+}
 
 export async function GET(req: Request) {
   try {
@@ -37,10 +42,16 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, email, password, phone, classId } = body;
+    let { name, email, password, phone, classId } = body;
 
-    if (!name || !email || !password) {
-      return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
+    if (!name) {
+      return NextResponse.json({ error: 'Name is required' }, { status: 400 });
+    }
+
+    if (!email || !password) {
+      const generated = generateFromName(name);
+      if (!email) email = generated.email;
+      if (!password) password = generated.password;
     }
 
     await connectDB();
@@ -53,7 +64,7 @@ export async function POST(req: Request) {
     const hashedPassword = await hashPassword(password);
     const student = await User.create({
       name,
-      email,
+      email: email.toLowerCase(),
       password: hashedPassword,
       role: 'student',
       phone,
@@ -66,7 +77,7 @@ export async function POST(req: Request) {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
     const { password: _sp, ...studentData } = student as any;
-    return NextResponse.json({ student: studentData }, { status: 201 });
+    return NextResponse.json({ student: studentData, credentials: { email: email.toLowerCase(), password } }, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Server error';
     return NextResponse.json({ error: message }, { status: 500 });
